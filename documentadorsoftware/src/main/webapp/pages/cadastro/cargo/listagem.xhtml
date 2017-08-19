@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:adm="http://github.com/adminfaces"
+                template="/WEB-INF/templates/template.xhtml">
+
+
+    <ui:define name="head-end">
+        <ui:param name="enableSlideMenu" value="false"/> <!-- disables slide menu (only on this page) on small screens -->
+        <ui:param name="autoShowNavbar" value="false"/> <!-- disables auto show navbar (only on this page) on small devices -->
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align: right !important;
+            }
+
+            body .ui-datatable .ui-datatable-header, .ui-datatable .ui-datatable-footer{
+				background: white !important;
+				border: none;
+			}
+				
+			ui-panel-content ui-widget-content{
+				padding: 1px  !important;
+			}
+			
+			body div.ui-datatable div.ui-paginator {
+				border-bottom: 1px solid #e2e2e2 !important;
+			}
+			
+			body .ui-datatable th.ui-state-default[role="columnheader"]{
+				background: #D3D3D3 !important;
+			}
+			
+			.box-header.with-border{
+				border-bottom: none !important;	
+				margin: 0px !important;
+				padding-right: 0px;
+				padding-left: 2px;
+			}
+		</style>
+    </ui:define>
+    <ui:define name="title">
+        Datatable
+    </ui:define>
+
+  <ui:define name="body">
+  
+        <adm:breadcrumb title="Resultado"/>
+          <p:panel styleClass="card box-info">
+			<h:form>
+         	  <div id="datatable" style="overflow: hidden !important">
+                <div class="box-header with-border">
+  					 <p:dataTable value="#{contatoLista.listaContatos}" var="contato" cellspacing="0"
+								  cellpadding="2" paginator="true" rows="5" paginatorPosition="bottom"
+								  emptyMessage="Nenhum Contato Encontrado" id="tabelaContatos"
+								  binding="#{contatoLista.dataTable}" >
+								 		                          
+		                           <f:facet name="header">
+			                            <p:outputPanel>
+			                                <h:outputText value="Procurar"/>
+			                                <p:spacer height="10"/>
+			                                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px"
+			                                             placeholder="Procurar"/>
+			                               <p:spacer height="10"/>
+			                               <p:commandButton id="brFind" value="" process="@form" update="@form"
+			                                                action="#{contatoLista.procurarContato}" styleClass="btn-flat" 
+			                                                class="fa fa-search" style="background: white;"/>
+			                            </p:outputPanel>
+			                        </f:facet>
+		                          
+		                           <p:column headerText="Nome"  style="text-align: center">
+			                           <h:outputText value="#{contato.nome}"/>
+			                       </p:column>
+			                       
+			                       <p:column headerText="Telefone" style="text-align: center">                           
+			                           <h:outputText value="#{contato.telefone}" /> 
+			                       </p:column>
+					</p:dataTable>
+                </div>
+                <div style="width: 100%; overflow: hidden !important">
+						<p:commandButton value="Excluir" icon="fa fa-times" 
+										 action="#{contato.cancelar}"
+								 		 styleClass="btn-danger"/>
+						<p:spacer width="5" />
+					
+					   	<p:commandButton value="Voltar" icon="fa fa-chevron-left" action="#{contato.cancelar}"
+								 		 styleClass="btn-danger"  immediate="true"
+								 		 process="@form" update="@form" />
+						<p:spacer width="5" />
+							
+						<p:commandButton action="#{contato.cadastrar}"
+										 ajax="false" icon="fa fa-plus" value="Imprimir"
+										 styleClass="btn-primary btn-success pull-right" />
+						<p:spacer width="5" />
+				</div>				                
+              </div>
+          </h:form>
+        </p:panel>
+    </ui:define>
+
+</ui:composition>
+    
