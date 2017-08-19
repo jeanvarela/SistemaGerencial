@@ -11,95 +11,37 @@
     <ui:define name="body">
         <h:form id="form" prependId="false">
             <div class="box box-primary">
-               <div class="box-header with-border" style="padding-top: 1px !important; padding-left: 1px !important ">
-                    	<p:tabView>
-					        <p:tab title="Dados Pessoais">
-					          <div class="row">	
-		                   		<div class="form-group col-md-12">
-					                    	  <p:outputLabel value="Nome" for="nomeContato" />
-											  <p:inputText value="#{contato.nome}" id="nomeContato" styleClass="form-control"
-														   required="true" autocomplete="off"
-														   requiredMessage="O nome deve ser preenchido."/>
-				                              <h:message for="nomeContato" style="color:red" />
-				               </div>
-		  		             </div>
+                <div class="box-header with-border">
+                   	<div class="row">	
+                   		<div class="form-group col-md-12">
+			                    	  <p:outputLabel value="Descrição" for="descricaoCargo" />
+									  <p:inputText value="#{cargo.descricao}" id="descricaoCargo" 
+									  			   styleClass="form-control"
+												   required="true" autocomplete="off"
+												   requiredMessage="O cargo deve ser preenchido."/>
+		                              <h:message for="descricaoCargo" style="color:red" />
+		               </div>
+		           </div>
 		           
-				           	<div class="row">	
-		                   	   <div class="form-group col-md-6">
-					                    	  <p:outputLabel value="Campo 1" for="campo1" />
-											  <p:inputText id="campo1" styleClass="form-control"/>
-				                              <h:message for="campo1" style="color:red" />
-				               </div>
-				               <div class="form-group col-md-6">
-					                    	  <p:outputLabel value="Campo 2" for="campo2" />
-											  <p:inputText id="campo2" styleClass="form-control"/>
-				                              <h:message for="campo2" style="color:red" />
-				               </div>
-				           </div>
-		            	
-				           <div class="row">	
-		                   		<div class="form-group col-md-6">
-					                    	  <p:outputLabel value="Campo 3" for="campo3" />
-											  <p:inputText id="campo3" styleClass="form-control"/>
-				                              <h:message for="campo3" style="color:red" />
-				               </div>
-				               <div class="form-group col-md-3">
-					                    	  <p:outputLabel value="Campo 4" for="campo4" />
-											  <p:inputText id="campo4" styleClass="form-control"/>
-				                              <h:message for="campo4" style="color:red" />
-				               </div>
-				               
-				               <div class="form-group col-md-3">
-					                    	  <p:outputLabel value="Campo 5" for="campo5" />
-											  <p:inputText id="campo5" styleClass="form-control"/>
-				                              <h:message for="campo5" style="color:red" />
-				               </div>	
-				           </div>
-				           
-				           <div class="row">	
-		                   		<div class="form-group col-md-3">
-					                    	  <p:outputLabel value="Campo 6" for="campo6" />
-											  <p:inputText id="campo6" styleClass="form-control"/>
-				                              <h:message for="campo6" style="color:red" />
-				               </div>
-				               <div class="form-group col-md-3">
-					                    	  <p:outputLabel value="Campo 7" for="campo7" />
-											  <p:inputText id="campo7" styleClass="form-control"/>
-				                              <h:message for="campo7" style="color:red" />
-				               </div>
-				               
-				               <div class="form-group col-md-6">
-					                    	  <p:outputLabel value="Campo 8" for="campo8" />
-											  <p:inputText id="campo8" styleClass="form-control"/>
-				                              <h:message for="campo8" style="color:red" />
-				               </div>	               
-				            
-				           </div>
-		                </p:tab>
-					    
-					    <p:tab title="Godfather Part II">
-					            <h:panelGrid columns="2" cellpadding="10">
-					                <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
-					                <h:outputText value="Francis Ford Coppola's legendary..." />
-					            </h:panelGrid>
-					    </p:tab>
-					    
-					    <p:tab title="Godfather Part III">
-					            <h:panelGrid columns="2" cellpadding="10">
-					                <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
-					                <h:outputText value="After a break of more than 15 years..." />
-					            </h:panelGrid>
-					    </p:tab>
-					</p:tabView>
-		          
+		           	<div class="row">	
+                   		<div class=" col-md-12">
+			                    <h:selectBooleanCheckbox id="ativo" value="#{cargo.ativo}"/>
+								<p:spacer width="5" />
+								<h:outputLabel value="Ativo" for="ativo"/>
+		               </div>
+		              
+		           </div>
+		           
+		           
+		           
 		           <div class="pull-right">
-				    	<p:commandButton value="Cancelar" icon="fa fa-times" action="#{contato.cancelar}"
+				    	<p:commandButton value="Cancelar" icon="fa fa-times" action="#{cargo.cancelar}"
 								 		 styleClass="btn-danger"  immediate="true"
 								 		 process="@form" update="@form" />
 						<p:spacer width="5" />
 							
-						<p:commandButton action="#{contato.cadastrar}"
-										 ajax="false" icon="fa fa-plus" value="#{contato.acao}"
+						<p:commandButton action="#{cargo.cadastrar}"
+										 ajax="false" icon="fa fa-plus" value="Cadastrar"
 										 styleClass="btn-primary btn-success" />
 						<p:spacer width="5" />
 				 </div>
