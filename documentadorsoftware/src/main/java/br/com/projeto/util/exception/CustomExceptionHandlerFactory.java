@@ -9,7 +9,7 @@ public class CustomExceptionHandlerFactory extends ExceptionHandlerFactory {
     public CustomExceptionHandlerFactory(ExceptionHandlerFactory parent) {
         this.parent = parent;
     }
- 
+    
     @Override
     public ExceptionHandler getExceptionHandler() {
         ExceptionHandler handler = new CustomExceptionHandler(parent.getExceptionHandler());
