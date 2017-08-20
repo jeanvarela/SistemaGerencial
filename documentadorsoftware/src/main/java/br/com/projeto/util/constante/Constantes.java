@@ -11,5 +11,7 @@ public class Constantes {
 
     public static final String ID_USUARIO = "ID_USUARIO";
     public static final String NOME_USUARIO = "NOME_USUARIO";
+    
+    public static final String LISTA = "LISTA"; 
 	
 }

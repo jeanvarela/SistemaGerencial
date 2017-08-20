@@ -6,6 +6,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Root;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.hibernate.Criteria;
@@ -13,8 +17,11 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
+import br.com.projeto.infraestrutura.util.Util;
 import br.com.projeto.modelo.entidade.GenericDomain;
+import br.com.projeto.modelo.entidade.cargo.Cargo;
 import br.com.projeto.util.jpa.JPAUtil;
+import br.com.projeto.util.mensagens.MensagensUtil;
 
 /**
  * Classse utilizada para aceessar o banco de dados
@@ -44,11 +51,11 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 	
 
 	@SuppressWarnings("unchecked")
-	public List<T> listar(String... propriedades){
+	public List<T> listar( String... propriedades){
 		Session session = manager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(classe);
 		
-		if (propriedades != null) {
+		if (Util.verificarStringVarArgComElementosNulo(propriedades)) {
 			for (String propriedade : propriedades) {
 				try {
 					Object valor = PropertyUtils.getProperty(classe, propriedade);
@@ -59,8 +66,10 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 							criteria.add(Restrictions.eq(propriedade, valor));
 						}
 					}
+
+
 				} catch (Exception e) {
-					throw new RuntimeException("Propriedade n�o encontrada", e);
+					throw new RuntimeException(MensagensUtil.getMensagem("propriedadeNaoEncontrada"), e);
 				}
 			}
 		}

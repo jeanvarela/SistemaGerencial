@@ -24,4 +24,20 @@ public class Util {
 		return numero != null && numero > 0;
 	}
 	
+	public static boolean verificarInformacaoPreenchida(String informacao){
+		return informacao != null && !informacao.trim().equals("");
+	}
+	
+	public static boolean verificarStringVarArgComElementosNulo(String... valores){
+		
+		if (valores.length > 0){
+			for (int i = 0; i < valores.length; i++){
+				if (valores[i] != null){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
 }
