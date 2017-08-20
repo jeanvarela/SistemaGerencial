@@ -20,4 +20,8 @@ public class Util {
 		return conteudoConvertido;
 	}
 	
+	public static boolean verificaNumeroValidoMaiorQueZero(Long numero){
+		return numero != null && numero > 0;
+	}
+	
 }
