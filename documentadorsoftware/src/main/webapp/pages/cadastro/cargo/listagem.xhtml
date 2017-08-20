@@ -49,9 +49,9 @@
 			<h:form>
          	  <div id="datatable" style="overflow: hidden !important">
                 <div class="box-header with-border">
-  					 <p:dataTable value="#{contatoLista.listaContatos}" var="contato" cellspacing="0"
+  					 <p:dataTable value="#{cargoLista.cargos}" var="cargo" cellspacing="0"
 								  cellpadding="2" paginator="true" rows="5" paginatorPosition="bottom"
-								  emptyMessage="Nenhum Contato Encontrado" id="tabelaContatos"
+								  emptyMessage="Nenhum Cargo Encontrado" id="tabelaContatos"
 								  binding="#{contatoLista.dataTable}" >
 								 		                          
 		                           <f:facet name="header">
@@ -67,13 +67,11 @@
 			                            </p:outputPanel>
 			                        </f:facet>
 		                          
-		                           <p:column headerText="Nome"  style="text-align: center">
-			                           <h:outputText value="#{contato.nome}"/>
+		                           <p:column headerText="Descrição"  style="text-align: center">
+			                           <h:outputText value="#{cargo.descricao}"/>
 			                       </p:column>
 			                       
-			                       <p:column headerText="Telefone" style="text-align: center">                           
-			                           <h:outputText value="#{contato.telefone}" /> 
-			                       </p:column>
+			                       
 					</p:dataTable>
                 </div>
                 <div style="width: 100%; overflow: hidden !important">
