@@ -5,10 +5,13 @@ import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import org.omnifaces.util.Faces;
 
+import br.com.projeto.controlador.cargo.ControladorCargo;
+import br.com.projeto.controlador.cargo.IControladorCargo;
+import br.com.projeto.infraestrutura.util.Util;
+import br.com.projeto.modelo.entidade.cargo.Cargo;
 import br.com.projeto.util.mensagens.MensagensUtil;
 
 @ManagedBean(name="cargo")
@@ -41,27 +44,22 @@ public class CargoBean {
 	} 
 	
 	public void cadastrar(){
-/*		Cargo cargo = new Cargo();
+		Cargo cargo = new Cargo();
 		cargo.setDescricao(this.descricao);
 		cargo.setAtivo(this.ativo);
 		
 		IControladorCargo controladorCargo = new ControladorCargo();
-		controladorCargo.insereCargo(cargo);
-*/
-/*		FacesContext context = FacesContext.getCurrentInstance();
-		FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, null,"Mensagem");
-		
-		context.addMessage(null, mensagem);
-	
-		context.getExternalContext().getFlash().setKeepMessages(true);*/
-		
-		String mensagem = "Mensagem para teste";
-		MensagensUtil.enviarMensagem(mensagem,FacesMessage.SEVERITY_INFO);
+		long idCargo = controladorCargo.insereCargo(cargo);
 
-		 try {
-				Faces.redirect("index.xhtml");
-			} catch (IOException e) {
-				e.printStackTrace();
-	}
+		if (Util.verificaNumeroValidoMaiorQueZero(idCargo)){
+			MensagensUtil.enviarMensagem(MensagensUtil.getMensagem("cargoInseridoComSucesso"),
+					                     FacesMessage.SEVERITY_INFO);
+
+			 try {
+					Faces.redirect("index.xhtml");
+				 } catch (IOException e) {
+					e.printStackTrace();
+				 }
+		}
 	}
 }
