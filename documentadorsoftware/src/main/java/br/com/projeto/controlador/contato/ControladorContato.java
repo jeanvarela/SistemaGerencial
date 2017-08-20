@@ -20,7 +20,7 @@ public class ControladorContato implements IControladorContato {
 	 */
 	@Override
 	public Contato insereContato(Contato contato) {
-		return (Contato) this.repositorioContato.salvar(contato);
+		return null; //(Contato) this.repositorioContato.salvar(contato);
 	}
 
 	/**

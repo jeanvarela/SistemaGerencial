@@ -4,6 +4,6 @@ import br.com.projeto.modelo.entidade.cargo.Cargo;
 
 public interface IControladorCargo {
 	
-	public void insereCargo(Cargo cargo);
+	public long insereCargo(Cargo cargo);
 
 }

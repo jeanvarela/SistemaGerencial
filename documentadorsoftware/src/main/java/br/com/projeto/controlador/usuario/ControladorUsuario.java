@@ -23,7 +23,7 @@ public class ControladorUsuario implements IControladorUsuario {
 	 */	
 	@Override
 	public long adicionaUsuario(Usuario usuario) {
-		return ((Usuario)repositorioUsuario.salvar(usuario)).getCodigo();
+		return repositorioUsuario.salvar(usuario);
 	}
 	
 	@Override
