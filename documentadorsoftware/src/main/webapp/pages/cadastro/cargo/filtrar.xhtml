@@ -5,42 +5,31 @@
                 template="/WEB-INF/templates/template.xhtml">
 
     <ui:define name="title">
-       Novo Cargo
+       Pesquisar Cargo
     </ui:define>
+    
 
     <ui:define name="body">
         <h:form id="form" prependId="false">
             <div class="box box-primary">
                 <div class="box-header with-border">
                    	<div class="row">	
-                   		<div class="form-group col-md-12">
+                   		<div class="form-group col-md-12" style="margin-bottom: 0px !important">
 			                    	  <p:outputLabel value="Descrição" for="descricaoCargo" />
-									  <p:inputText value="#{cargo.descricao}" id="descricaoCargo" 
-									  			   styleClass="form-control"
-												   required="true" autocomplete="off"
-												   requiredMessage="O cargo deve ser preenchido."/>
-		                              <h:message for="descricaoCargo" style="color:red" />
-		               </div>
-		           </div>
+									  <p:inputText value="#{cargoPesquisa.descricao}" id="descricaoCargo" 
+									  			   styleClass="form-control"  autocomplete="off"/>
+		                              <h:message for="descricaoCargo" style="color:red" />		                            
+		               </div>		          	
+		           </div>		           
 		           
-		           	<div class="row">	
-                   		<div class=" col-md-12">
-			                    <h:selectBooleanCheckbox id="ativo" value="#{cargo.ativo}"/>
-								<p:spacer width="5" />
-								<h:outputLabel value="Ativo" for="ativo"/>
-		               </div>		              
-		           </div>
-		           
-		           
-		           
-		           <div class="pull-right">
-				    	<p:commandButton value="Cancelar" icon="fa fa-times" action="#{cargo.cancelar}"
+		          <div class="pull-right" style="margin-top: 10px">
+	 		          <p:commandButton value="Cancelar" icon="fa fa-times" action="#{cargo.cancelar}"
 								 		 styleClass="btn-danger"  immediate="true"
 								 		 process="@form" update="@form" />
 						<p:spacer width="5" />
-							
-						<p:commandButton action="#{cargo.cadastrar}"
-										 ajax="false" icon="fa fa-plus" value="Cadastrar"
+						
+						<p:commandButton action="#{cargoPesquisa.pesquisar}"
+										 ajax="false" icon="fa fa-search" value="Pesquisar"
 										 styleClass="btn-primary btn-success" />
 						<p:spacer width="5" />
 				 </div>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.component.datatable.DataTable;
 
+import br.com.projeto.controlador.cargo.ControladorCargo;
+import br.com.projeto.controlador.cargo.IControladorCargo;
 import br.com.projeto.controlador.contato.ControladorContato;
 import br.com.projeto.controlador.contato.IControladorContato;
 import br.com.projeto.infraestrutura.util.Util;
