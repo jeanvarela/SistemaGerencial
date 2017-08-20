@@ -33,13 +33,13 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 	}
 
 	@Override
-	public GenericDomain salvar(GenericDomain entidade) {
+	public Long salvar(GenericDomain entidade) {
 		EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
 		manager.persist(entidade);
 		transaction.commit();
 		
-		return entidade;
+		return entidade != null ? entidade.getCodigo() : null;
 	}
 	
 
