@@ -7,12 +7,14 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.model.SelectableDataModel;
+
 import br.com.projeto.modelo.entidade.cargo.Cargo;
 import br.com.projeto.util.constante.Constantes;
 
 @ManagedBean(name="cargoLista")
 @ViewScoped
-public class CargoListBean {
+public class CargoListBean implements SelectableDataModel {
 
 	private List<Cargo> cargos;
 
@@ -29,6 +31,18 @@ public class CargoListBean {
 	
 	public List<Cargo> getCargos() {
 		return cargos;
+	}
+
+	@Override
+	public Object getRowData(String arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object getRowKey(Object arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 	
 }

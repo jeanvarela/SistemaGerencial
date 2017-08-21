@@ -49,42 +49,51 @@
 			<h:form>
          	  <div id="datatable" style="overflow: hidden !important">
                 <div class="box-header with-border">
-  					 <p:dataTable value="#{cargoLista.cargos}" var="cargo" cellspacing="0"
-								  cellpadding="2" paginator="true" rows="5" paginatorPosition="bottom"
-								  emptyMessage="Nenhum Cargo Encontrado" id="tabelaContatos"
-								  binding="#{contatoLista.dataTable}" >
+  					
+				    <p:dataTable value="#{cargoLista.cargos}" var="cargo" cellspacing="0"
+								 cellpadding="2" paginator="true" rows="5" paginatorPosition="bottom"
+								 emptyMessage="Nenhum Cargo Encontrado" id="tabelaContatos"
+								 binding="#{contatoLista.dataTable}" >
 								 		                          
-		                           <f:facet name="header">
-			                            <p:outputPanel>
-			                                <h:outputText value="Procurar"/>
-			                                <p:spacer height="10"/>
-			                                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px"
-			                                             placeholder="Procurar"/>
-			                               <p:spacer height="10"/>
-			                               <p:commandButton id="brFind" value="" process="@form" update="@form"
-			                                                action="#{contatoLista.procurarContato}" styleClass="btn-flat" 
-			                                                class="fa fa-search" style="background: white;"/>
-			                            </p:outputPanel>
-			                        </f:facet>
+		                         <f:facet name="header">
+			                         <p:outputPanel>
+			                            <h:outputText value="Procurar"/>
+			                            <p:spacer height="10"/>
+			                            <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px"
+			                                         placeholder="Procurar"/>
+			                            <p:spacer height="10"/>
+			                            <p:commandButton id="brFind" value="" process="@form" update="@form"
+			                                             action="#{contatoLista.procurarContato}" styleClass="btn-flat" 
+			                                             class="fa fa-search" style="background: white;"/>
+			                         </p:outputPanel>
+			                     </f:facet>
 		                          
-		                           <p:column headerText="Descrição"  style="text-align: center">
-			                           <h:outputText value="#{cargo.descricao}"/>
-			                       </p:column>
+		                         <p:column headerText="Descrição"  style="text-align: center">
+			                         <h:outputText value="#{cargo.descricao}"/>
+			                     </p:column>
 			                       
-			                       
-					</p:dataTable>
+			                     <p:column headerText="Opções"  style="width:110px;text-align:center">
+			                             <p:commandLink  id="btnEditar1" action="#{pessoaLista.editar(pessoa)}"
+							                              ajax="false" title="Editar">     
+												<i class="fa fa-search"></i>
+										  </p:commandLink> 
+										  
+								          <p:commandLink  id="btnEditar" action="#{pessoaLista.editar(pessoa)}" ajax="false" title="Editar">     
+												<i class="fa fa-edit"></i>
+										  </p:commandLink>
+										  
+										  <p:commandLink  id="btnVisualizar" action="#{pessoaLista.editar(pessoa)}" ajax="false" title="Editar">     
+												<i class="fa fa-trash-o"></i>
+										  </p:commandLink>
+						        </p:column>  
+				   </p:dataTable>
                 </div>
-                <div style="width: 100%; overflow: hidden !important">
-						<p:commandButton value="Excluir" icon="fa fa-times" 
-										 action="#{contato.cancelar}"
-								 		 styleClass="btn-danger"/>
-						<p:spacer width="5" />
-					
+                <div style="width: 100%; overflow: hidden !important">					
 					   	<p:commandButton value="Voltar" icon="fa fa-chevron-left" action="#{contato.cancelar}"
 								 		 styleClass="btn-danger"  immediate="true"
 								 		 process="@form" update="@form" />
 						<p:spacer width="5" />
-							
+						
 						<p:commandButton action="#{contato.cadastrar}"
 										 ajax="false" icon="fa fa-plus" value="Imprimir"
 										 styleClass="btn-primary btn-success pull-right" />
